@@ -33,7 +33,11 @@ public class MapGen : MonoBehaviour
 
     void createFourWalls(GameObject floor)
     {
-        GameObject wall1 = Instantiate(wallPrefab, new Vector3(floor.transform.position.x + 4.5f, 0, floor.transform.position.z), Quaternion.identity);
+        createWall(new Vector3(floor.transform.position.x + 4.5f, 0, floor.transform.position.z), Quaternion.identity, 90);
+        createWall(new Vector3(floor.transform.position.x - 4.5f, 0, floor.transform.position.z), Quaternion.identity, 90);
+        createWall(new Vector3(floor.transform.position.x, 0, floor.transform.position.z + 4.5f), Quaternion.identity);
+        createWall(new Vector3(floor.transform.position.x, 0, floor.transform.position.z - 4.5f), Quaternion.identity);
+        /*GameObject wall1 = Instantiate(wallPrefab, new Vector3(floor.transform.position.x + 4.5f, 0, floor.transform.position.z), Quaternion.identity);
         wall1.transform.parent = transform;
         wallList.Add(wall1);
         GameObject wall2 = Instantiate(wallPrefab, new Vector3(floor.transform.position.x - 4.5f, 0, floor.transform.position.z), Quaternion.identity);
@@ -46,6 +50,14 @@ public class MapGen : MonoBehaviour
         wall4.transform.parent = transform;
         wallList.Add(wall4);
         wall1.transform.Rotate(0, 90, 0);
-        wall2.transform.Rotate(0, 90, 0);
+        wall2.transform.Rotate(0, 90, 0);*/
+    }
+
+    void createWall(Vector3 pos, Quaternion rot, int rotation = 0)
+    {
+        GameObject wall = Instantiate(wallPrefab, pos, rot);
+        wall.transform.parent = transform;
+        wallList.Add(wall);
+        wall.transform.Rotate(0, rotation, 0);
     }
 }
