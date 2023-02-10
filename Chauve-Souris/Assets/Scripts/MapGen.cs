@@ -29,6 +29,7 @@ public class MapGen : MonoBehaviour
                 createFourWalls(floor);
             }
         }
+        cuteDoubleWall();
     }
 
     void createFourWalls(GameObject floor)
@@ -37,20 +38,6 @@ public class MapGen : MonoBehaviour
         createWall(new Vector3(floor.transform.position.x - 4.5f, 0, floor.transform.position.z), Quaternion.identity, 90);
         createWall(new Vector3(floor.transform.position.x, 0, floor.transform.position.z + 4.5f), Quaternion.identity);
         createWall(new Vector3(floor.transform.position.x, 0, floor.transform.position.z - 4.5f), Quaternion.identity);
-        /*GameObject wall1 = Instantiate(wallPrefab, new Vector3(floor.transform.position.x + 4.5f, 0, floor.transform.position.z), Quaternion.identity);
-        wall1.transform.parent = transform;
-        wallList.Add(wall1);
-        GameObject wall2 = Instantiate(wallPrefab, new Vector3(floor.transform.position.x - 4.5f, 0, floor.transform.position.z), Quaternion.identity);
-        wall2.transform.parent = transform;
-        wallList.Add(wall2);
-        GameObject wall3 = Instantiate(wallPrefab, new Vector3(floor.transform.position.x, 0, floor.transform.position.z + 4.5f), Quaternion.identity);
-        wall3.transform.parent = transform;
-        wallList.Add(wall3);
-        GameObject wall4 = Instantiate(wallPrefab, new Vector3(floor.transform.position.x, 0, floor.transform.position.z - 4.5f), Quaternion.identity);
-        wall4.transform.parent = transform;
-        wallList.Add(wall4);
-        wall1.transform.Rotate(0, 90, 0);
-        wall2.transform.Rotate(0, 90, 0);*/
     }
 
     void createWall(Vector3 pos, Quaternion rot, int rotation = 0)
@@ -59,5 +46,27 @@ public class MapGen : MonoBehaviour
         wall.transform.parent = transform;
         wallList.Add(wall);
         wall.transform.Rotate(0, rotation, 0);
+    }
+
+    void cuteDoubleWall() {
+        for (int i = 0; i < wallList.Count; i++) {
+            if (isWall(new Vector3(wallList[i].transform.position.x, wallList[i].transform.position.y, wallList[i].transform.position.z + 1))) {
+                Destroy(wallList[i]);
+                wallList.RemoveAt(i);
+            }
+            if (isWall(new Vector3(wallList[i].transform.position.x + 1, wallList[i].transform.position.y, wallList[i].transform.position.z))) {
+                Destroy(wallList[i]);
+                wallList.RemoveAt(i);
+            }
+        }
+    }
+
+    bool isWall(Vector3 pos) {
+        for (int i = 0; i < wallList.Count; i++) {
+            if (wallList[i].transform.position == pos) {
+                return true;
+            }
+        }
+        return false;
     }
 }
