@@ -31,9 +31,16 @@ public class MapGen : MonoBehaviour
         }
         cuteDoubleWall();
         for (int i = 0; i < wallList.Count; i++) {
+            if (wallList[i].transform.position.x == -4.5 && wallList[i].transform.position.z == 0) {
+                Destroy(wallList[i]);
+                wallList.RemoveAt(i);
+            }
             if (!checkIfWallIsEdge(wallList[i])) {
                 int rand = Random.Range(0, 180);
                 wallList[i].transform.Rotate(0, rand, 0);
+            } else
+            {
+                wallList[i].gameObject.transform.GetChild(0).gameObject.transform.localScale = new Vector3(10, 5, 1);
             }
         }
     }
