@@ -30,6 +30,12 @@ public class MapGen : MonoBehaviour
             }
         }
         cuteDoubleWall();
+        for (int i = 0; i < wallList.Count; i++) {
+            if (!checkIfWallIsEdge(wallList[i])) {
+                int rand = Random.Range(0, 180);
+                wallList[i].transform.Rotate(0, rand, 0);
+            }
+        }
     }
 
     void createFourWalls(GameObject floor)
@@ -66,6 +72,13 @@ public class MapGen : MonoBehaviour
             if (wallList[i].transform.position == pos) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    bool checkIfWallIsEdge(GameObject wall) {
+        if (wall.transform.position.x == -4.5f || wall.transform.position.x == mapSize * 10 - 5.5f|| wall.transform.position.z == -4.5f || wall.transform.position.z == mapSize * 10 - 5.5f) {
+            return true;
         }
         return false;
     }
