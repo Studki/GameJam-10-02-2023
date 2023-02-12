@@ -70,3 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+Chauve-Souris/Assets/GIrl/Ch46_nonPBR.fbx.meta
+Chauve-Souris/Assets/Ch15_nonPBR 1.fbx.meta
+Chauve-Souris/Assets/StarterAssets/ThirdPersonController/Character/Animations/StarterAssetsThirdPerson.controller
