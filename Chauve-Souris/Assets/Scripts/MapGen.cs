@@ -10,6 +10,7 @@ public class MapGen : MonoBehaviour
 
     private List<GameObject> floorList = new List<GameObject>();
     private List<GameObject> wallList = new List<GameObject>();
+    private List<GameObject> ceillingList = new List<GameObject>();
     public int mapSize = 10;
 
     void Start()
@@ -24,6 +25,9 @@ public class MapGen : MonoBehaviour
             for (int y = 0; y < mapSize; y++)
             {
                 GameObject floor = Instantiate(floorPrefab, new Vector3(x * 10, 0, y * 10), Quaternion.identity);
+                GameObject ceilling = Instantiate(floorPrefab, new Vector3(x * 10, 5, y * 10), Quaternion.identity);
+                ceilling.transform.parent = transform;
+                ceillingList.Add(ceilling);
                 floor.transform.parent = transform;
                 floorList.Add(floor);
                 createFourWalls(floor);
