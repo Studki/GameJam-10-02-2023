@@ -11,7 +11,7 @@ public class SpawnOnMap : MonoBehaviour
     {
         int randX = Random.Range(-4, mapSize * 10 - 4);
         int randZ = Random.Range(-4, mapSize * 10 - 4);
-        transform.position = new Vector3(randX, 0.5f, randZ);
+        transform.position = new Vector3(randX, 1f, randZ);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,7 +20,7 @@ public class SpawnOnMap : MonoBehaviour
         {
             int randX = Random.Range(-4, mapSize * 10 - 4);
             int randZ = Random.Range(-4, mapSize * 10 - 4);
-            transform.position = new Vector3(randX, 0.5f, randZ);
+            transform.position = new Vector3(randX, 1f, randZ);
         }
     }
 }
