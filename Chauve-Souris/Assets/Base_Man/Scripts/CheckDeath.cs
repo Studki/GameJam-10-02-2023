@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckWin : MonoBehaviour
+public class CheckDeath : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("You Win!");
+            Debug.Log("You Lose!");
         }
     }
 }

@@ -14,7 +14,7 @@ public class SpawnOnMap : MonoBehaviour
         transform.position = new Vector3(randX, 0.5f, randZ);
     }
 
-    void onTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Wall")
         {
