@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class CheckDeath : MonoBehaviour
 {
+    private GameManager manager;
+
+    private void Start () {
+        manager = GameManager.instance;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("You Lose!");
+            manager.ChangeScene("end");
+            StartCoroutine(EndJump());
         }
+    }
+
+    IEnumerator EndJump() {
+        yield return new WaitForSeconds(2.03f);
+        manager.ChangeScene("SampleScene");
     }
 }
